@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class MarketWeb {
+public class MarketWeb implements Cash, CreditCard {
 
     private String name;
     private int age;
@@ -39,17 +39,24 @@ public class MarketWeb {
         this.address = address;
     }
 
-    public boolean permission(int age) {
-        if (age > 17) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     public void basket(String nameProduct) {
         listProduct.add(nameProduct);
     }
 
+    @Override
+    public int payCash(int itog, int cash) {
+        int result;
+        if ((cash - itog) >= 0) {
+            result = cash - itog;
+            return result;
+        } else {
+            System.out.println("Не достаточно средств");
+            return -1;
+        }
 
+    }
+    @Override
+    public void payCreditCard(int itog, int cardNumber) {
+        System.out.println("Оплата картой произведена успешно");
+    }
 }

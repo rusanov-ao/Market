@@ -22,26 +22,24 @@ public class Main {
         MarketWeb customer1 = new MarketWeb("Alexander", 27, "Moscow, Kutuzovskii");
 
         System.out.println("Выберите товар");
-        for (int i = 0; i < listProduct.size(); i++) {
-            System.out.println(i + 1 + ". " + listProduct.get(i));
-        }
+        printProduct(listProduct);
+
 
         while (true) {
             int x = scanner.nextInt();
             if (x == 0)  {
                 System.out.println("В корзину добавлены следующие товары:");
-                for(String nameProduct : productForBasket) {
-                    System.out.println(nameProduct);
-                }
+                printProduct(productForBasket);
                 break;
             }
             productForBasket.add(listProduct.get(x - 1));
         }
 
-
-
-
-
+    }
+    public static void printProduct(List<String> listProduct) { // Правило DRY!
+        for (int i = 0; i < listProduct.size(); i++) {  // Нет магических чисел
+            System.out.println(i + 1 + ". " + listProduct.get(i));
+        }
     }
 
 
