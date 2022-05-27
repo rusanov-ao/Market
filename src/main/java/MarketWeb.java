@@ -1,18 +1,20 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class MarketWeb implements Cash, CreditCard {
+public class MarketWeb extends Market implements CreditCard {
+    // Open closed principle
+    // Liskov substitution principle
 
     private String name;
     private int age;
-    private String address;
+    private String email;
 
     List<String> listProduct = new ArrayList<>();
 
-    public MarketWeb(String name, int age, String address) {
+    public MarketWeb(String name, int age, String email) {
         this.name = name;
         this.age = age;
-        this.address = address;
+        this.email = email;
     }
 
     public String getName() {
@@ -31,12 +33,12 @@ public class MarketWeb implements Cash, CreditCard {
         this.age = age;
     }
 
-    public String getAddress() {
-        return address;
+    public String getEmail() {
+        return email;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setEmail(String address) {
+        this.email = address;
     }
 
     public void basket(String nameProduct) {

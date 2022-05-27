@@ -1,4 +1,3 @@
-import com.sun.security.jgss.GSSUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +8,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         int count = 0;
+
 
         List<String> listProduct = new ArrayList<>();
         listProduct.add("Хлеб");
@@ -35,7 +35,8 @@ public class Main {
         pay.add("Наличными курьеру");
         pay.add("Картой онлайн");
 
-        MarketWeb customer1 = new MarketWeb("Alexander", 27, "Moscow, Kutuzovskii");
+        MarketWeb customer1 = new MarketWeb("Alexander", 27, "alex@support.ru");
+        SendAdvertising sendCustomer1 = new SendAdvertising();
 
         System.out.println("Выберите товар");
         System.out.println("Для выбора способа оплаты нажмите 0");
@@ -57,14 +58,15 @@ public class Main {
                     int cashCustomer = scanner.nextInt();
                     System.out.println("Сдача составит " + customer1.payCash(count, cashCustomer) + " рублей.");
                     System.out.println("Благодарим за покупку!");
+                    sendCustomer1.electronicCheck(count, productForBasket, customer1.getEmail());
                     break;
                 } else if (x == 2) {
                     System.out.println("Введите номер карты");
                     int cardNumber = scanner.nextInt();
                     customer1.payCreditCard(count, cardNumber);
                     System.out.println("Благодарим за покупку!");
-                    break;
-                }
+                    sendCustomer1.electronicCheck(count, productForBasket, customer1.getEmail());
+                    break;               }
 
                 continue;
             } else if (x == 99) {
@@ -74,7 +76,7 @@ public class Main {
             count = count + priceProduct.get(x - 1);
         }
 
-
+        ;
 
     }
     public static void printProduct(List<String> listProduct) { // Правило DRY!
