@@ -58,7 +58,14 @@ public class Main {
                     System.out.println("Сдача составит " + customer1.payCash(count, cashCustomer) + " рублей.");
                     System.out.println("Благодарим за покупку!");
                     break;
+                } else if (x == 2) {
+                    System.out.println("Введите номер карты");
+                    int cardNumber = scanner.nextInt();
+                    customer1.payCreditCard(count, cardNumber);
+                    System.out.println("Благодарим за покупку!");
+                    break;
                 }
+
                 continue;
             } else if (x == 99) {
                 break;
